@@ -21,7 +21,8 @@ library(ggrepel)
 #Question: How does sampling resolution impact the detection of rhythms?
 
 #Step 1. Load the 'gold standard' Hughes et. al. dataset, Found in exercise2 folder.
-dat <- read.csv("./SRBR/exercise2/ex2_data1.csv", check.names = FALSE)
+#dat <- read.csv("./SRBR/exercise2/ex2_data1.csv", check.names = FALSE)
+dat <- read.csv("../Data/ex2_data1.csv", check.names = FALSE)
 
 #Step 2. Subset the 'gold standard' down to a lower sampling resolution.
 #a) Each of the 5 lines of code below (Res1, Res2, etc.) specify a different resolution.
@@ -54,10 +55,10 @@ sub_dat <- dat %>%
   select(GeneSymbol, smpl_res)
 
 #d) Save this subset to the exercise2 folder as 'ex2.mysubset' 
-write_csv(sub_dat, "./SRBR/exercise2/ex2_mysubset.csv")  
+write_csv(sub_dat, "../Data/ex2_mysubset.csv")  
 
 #Step 3. Run MetaCycle on your subset
-runApp("./SRBR/MetaCycleApp")
+runApp("../MetaCycleApp")
 #Adjust the following parameters in MetaCycle --
 #Choose Data File: 'ex2.mysubset.csv'
 #Minper: '24'
@@ -67,7 +68,7 @@ runApp("./SRBR/MetaCycleApp")
 
 
 #Step 4a) Load MetaCycle results
-sub_meta <- read.csv("./SRBR/exercise2/ex2_mysubset_meta2d.csv")
+sub_meta <- read.csv("../Data/ex2_mysubset_meta2d.csv")
 
 #b) Add a variable to the dataframe that identifies the dataset.
 #The 'mutate' function is like excel 'insert column' and allows you to specify the contents
@@ -79,7 +80,7 @@ sub_meta_c <- sub_meta %>%
 #We want to compare our subsetted results to the gold-standard, so let's load that up...
 
 #c) Load MetaCycle output from the 'gold-standard' dataset (pre-run)
-gldstd_meta <- read.csv("./SRBR/exercise2/ex2_data2.csv", check.names = FALSE) %>%
+gldstd_meta <- read.csv("../Data/ex2_data2.csv", check.names = FALSE) %>%
   mutate(dataset = "gold_std") %>%
   select(dataset, CycID, JTK_BH.Q)
 
@@ -93,7 +94,7 @@ mysubset <- "2hr2day"
 
 #c) Run function 'QvGene'
 #feel free to take a look at the code behind the function, found in the funx.R script
-source("./SRBR/exercise2/funx.R")
+source("ex2_funx.R")
 QvG <- QvGene(combi)
 #take a look at the QvG dataframe showing number of circadian genes at a series of JTK.Q-value thresholds 
 
@@ -115,6 +116,10 @@ ggplot(QvG, aes(x = fdr, y=genes, color = dataset, group = dataset, label = gene
 
 #GROUP THINK: take a minute to discuss among your group...
 #i) What, if any, benefit is there to looking at cycling genes across a range of FDR thresholds? 
+# You can see at which point, significant genes are found 
+
 #ii) How do the different sampling resolutions compare to the 'gold-standard'?  
+# at JTK qvalue of 0.005, there is roughyl a 4 fold difference between gold standard and the subset
+
 #iii) What are the key trade-offs being made when choosing between 'high' vs. 'low' sampling resolutions?
 #FYI, check it out:  the CircaInSilico web-based app (Hughes et. al. 2017 'Guidelines for Genome-Scale Analysis of Biological Rhythms') is useful for simulating the impact of different designs on type1/2 errors.
