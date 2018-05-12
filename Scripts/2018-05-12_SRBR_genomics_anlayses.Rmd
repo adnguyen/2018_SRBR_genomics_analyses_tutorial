@@ -1,0 +1,54 @@
+---
+title: "2018-05-12_biological_rhythms_genomics_tutorial"
+author: "Andrew D. Nguyen"
+date: "5/12/2018"
+output: 
+  html_document: 
+    toc: yes
+---
+
+# Meta cycle bootcamp
+
+Hosts: Tanya Leise, John Heo something
+
+
+
+## Goals and objectives    
+
+* Golden rules: brief intro- driven by need; tons of omics data 1998 to 2016
+  1. never duplicat and concatenate data before running statistics 
+  2. contorl for multiple testing 
+  3. deposit your raw data into public repos 
+  
+data duplication: 
+  * inflates p values 
+  * fabricating data 
+  
+
+
+
+# Loading Libraries
+
+```{r, include= FALSE}
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(shiny)
+library(MetaCycle)
+library(ggrepel)
+
+```
+
+# Workshop part 1: intro and metacycle 
+
+```{r}
+runApp("../MetaCycleApp/")
+dat <- read.csv("../Data/ex1_meta2d.csv")
+```
+
+# Session Info
+
+```{r session info}
+sessionInfo()
+
+```
