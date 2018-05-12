@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"2018-05-12_biological_rhythms_genomics_tutorial\"\nauthor: \"Andrew D. Nguyen\"\ndate: \"5/12/2018\"\noutput: \n  html_document: \n    toc: yes\n---\n# Loading Libraries\n\n```{r, include= FALSE}\nlibrary(ggplot2)\nlibrary(tidyr)\nlibrary(dplyr)\nlibrary(shiny)\nlibrary(MetaCycle)\nlibrary(ggrepel)\n\n```\n\n\n# Session Info\n\n```{r session info}\nsessionInfo()\n\n```",
+    "created" : 1526146094922.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "23|19|26|0|\n",
+    "hash" : "2998953899",
+    "id" : "F74A061E",
+    "lastKnownWriteTime" : 1526146321,
+    "last_content_update" : 1526146321581,
+    "path" : "~/Desktop/2018_SRBR_genomics_analyses_tutorial/2018-05-12_SRBR_genomics_anlayses.Rmd",
+    "project_path" : "2018-05-12_SRBR_genomics_anlayses.Rmd",
+    "properties" : {
+        "chunk_output_type" : "console",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
